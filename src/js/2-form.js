@@ -22,16 +22,16 @@ if (savedData) {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  if (formData.email === '' || formData.message === '') {
+  if (formData.email.trim() === '' || formData.message.trim() === '') {
     alert('Fill please all fields');
     return;
   } else {
     console.log(formData);
+    form.reset();
+    localStorage.removeItem('feedback-form-state');
+    formData = {
+      email: '',
+      message: '',
+    };
   }
-  form.reset();
-  localStorage.removeItem('feedback-form-state');
-  formData = {
-    email: '',
-    message: '',
-  };
 });
